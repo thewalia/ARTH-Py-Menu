@@ -59,7 +59,9 @@ def menu() :
     print(colors.fg.yellow)
     print("Press 5: To go to Docker menu")
     print(colors.fg.purple)
-
+    print("Press 6: To go to Machine Learning menu")
+    print(colors.fg.yellow)
+    print("Press Q: To Quit")
     print(colors.reset)
 
     choice = input("Enter your choice: ")
@@ -74,7 +76,12 @@ def menu() :
         aws()
     elif choice == '5' :
         docker()
-
+    elif choice == '6' :
+        ML()
+    elif choice == 'Q' :
+        exit()
+    else :
+        print(colors.fg.red,"Error: Wrong input!",colors.reset)
 
 def hash() :
     hashLine = '#'
@@ -92,11 +99,24 @@ def cal() :
     os.system('cal')
     
 
+def ML() :
+    ####################
+    ##Complete this function
+    #####################
+    os.system('clear')
+    hash()
+    greet = "Welcome to Machine Learning assistant!"
+    print(colors.fg.green)
+    print(greet.center(width))
+    print(colors.reset)
+
 def docker() :
     os.system('clear')
     hash()
     greet = "Welcome to Docker assistant!"
+    print(colors.fg.green)
     print(greet.center(width))
+    print(colors.reset)
     print("Press 1: To start docker engine\n")
     print("Press 2: To stop docker engine\n")
     print("Press 3: To list docker info\n")
@@ -154,7 +174,7 @@ def docker() :
     elif choiceDocker == 'Q' :
         exit()
     else :
-        print(colors.fg.red,"Error: Wrong Input!",colors.reset,end="")
+        print(colors.fg.red,"Error: Wrong Input!",colors.reset)
 
 
 def hadoop() :
@@ -162,6 +182,12 @@ def hadoop() :
     ##Complete this function
     #####################
     os.system('clear')
+    hash()
+    greet = "Welcome to Hadoop assistant!"
+    print(colors.fg.green)
+    print(greet.center(width))
+    print(colors.reset)
+
     print("Press A: To continue for Local Cluster")
     print("Press B: To continue for Cloud Cluster")
     choiceHadoop = input("Enter your choice: ")
@@ -182,10 +208,19 @@ def aws() :
     ##Complete this function
     #####################
     os.system('clear')
-    print("Creating new AWS EC-2 instance\n\n\n")
-    print("Deleting AWS EC-2 instance\n\n\n")
-    print("Creating new AWS S3 bucket\n\n\n")
-    print("Deleting AWS S3 bucket\n\n\n")
+    hash()
+    greet = "Welcome to AWS assistant!"
+    print(colors.fg.green)
+    print(greet.center(width))
+    print(colors.reset)
+
+    print("Press 1: For creating new AWS EC-2 instance\n\n\n")
+    print("Press 2: For deleting AWS EC-2 instance\n\n\n")
+    print("Press 3: For creating new AWS S3 bucket\n\n\n")
+    print("Press 4: deleting AWS S3 bucket\n\n\n")
+    choiceAws = input('Enter your choice : ')
+    if choiceAws == '1' :
+        os.system('clear')
 
 ####################################################
 ######### Welcome screen
