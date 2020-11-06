@@ -1,6 +1,6 @@
-###########################################
+#####################################################
 # Code for implementing color schemes
-###########################################
+#####################################################
 
 class colors: 
     reset='\033[0m'
@@ -36,10 +36,160 @@ class colors:
         cyan='\033[46m'
         lightgrey='\033[47m'
 
-###################################
-######### Welcome screen
-##################################
 
+
+####################################################
+#########functions
+####################################################
+def menu() :
+    os.system('clear')
+    hash()
+    print("\n")
+    printMenu = "Menu Items :"
+    print(printMenu.center(width))
+
+    print(colors.fg.yellow)
+    print("Press 1: To see date")
+    print(colors.fg.purple)
+    print("Press 2: To see calendar")
+    print(colors.fg.yellow)
+    print("Press 3: To go to Hadoop menu")
+    print(colors.fg.purple)
+    print("Press 4: To go to AWS menu")
+    print(colors.fg.yellow)
+    print("Press 5: To go to Docker menu")
+    print(colors.fg.purple)
+
+    print(colors.reset)
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1' :
+        date()
+    elif choice == '2' :
+        cal()
+    elif choice == '3' :
+        hadoop()
+    elif choice == '4' :
+        aws()
+    elif choice == '5' :
+        docker()
+
+
+def hash() :
+    hashLine = '#'
+    print(colors.fg.pink,end="")
+    print(hashLine.center(width,'#'),colors.reset)
+
+
+def date() :
+    os.system('clear')
+    os.system('date')
+
+
+def cal() :
+    os.system('clear')
+    os.system('cal')
+    
+
+def docker() :
+    os.system('clear')
+    hash()
+    greet = "Welcome to Docker assistant!"
+    print(greet.center(width))
+    print("Press 1: To start docker engine\n")
+    print("Press 2: To stop docker engine\n")
+    print("Press 3: To list docker info\n")
+    print("Press 4: To list all docker os\n")
+    print("Press 5: To launch docker OS\n")
+    print("Press 6: To start docker OS\n")
+    print("Press 7: To attach screen to docker OS\n")
+    print("Press 8: To delete docker OS\n")
+    print("Press 9: To delete All docker OS\n")
+    print("Press 10: To download docker image\n")
+    print("Press 11: To remove docker image\n")
+    print("Press M: To go back to Main Menu\n")
+    print("Press Q: To quit\n")
+    choiceDocker = input('\nEnter your choice : ')
+
+    if choiceDocker == '1' :
+        os.system('systemctl start docker')
+    elif choiceDocker == '2' :
+        os.system('systemctl stop docker')
+    elif choiceDocker == '3' :
+        os.system('docker info')
+    elif choiceDocker == '4' :
+        os.system('docker ps -a')
+    elif choiceDocker == '5' :
+        osName = input("Enter image os : ")
+        osVersion = input("Enter OS version : ")
+        launchInfo = 'docker run -it ' + osName + ':' + osVersion
+        os.system(launchInfo)
+    elif choiceDocker == '6' :
+        osName = input("Enter os name: ")
+        startInfo = 'docker start ' + osName
+        os.system(startInfo)
+    elif choiceDocker == '7' :
+        osName = input("Enter os name: ")
+        attachInfo = 'docker attach ' + osName
+        os.system(attachInfo)
+    elif choiceDocker == '8' :
+        osName = input("Enter os name: ")
+        deleteInfo = 'docker rm -f ' + osName
+        os.system(deleteInfo)
+    elif choiceDocker == '9' :
+        os.system('docker rm `docker ps -a -q`')
+    elif choiceDocker == '10' :
+        osName = input("Enter image os : ")
+        osVersion = input("Enter OS version : ")
+        pullInfo = 'docker pull ' + osName + ':' + osVersion
+        os.system(pullInfo)
+    elif choiceDocker == '11' :
+        osName = input("Enter image os : ")
+        osVersion = input("Enter OS version : ")
+        removeInfo = 'docker rmi -f ' + osName + ':' + osVersion
+        os.system(removeInfo)
+    elif choiceDocker == 'M' :
+        menu()
+    elif choiceDocker == 'Q' :
+        exit()
+    else :
+        print(colors.fg.red,"Error: Wrong Input!",colors.reset,end="")
+
+
+def hadoop() :
+    ####################
+    ##Complete this function
+    #####################
+    os.system('clear')
+    print("Press A: To continue for Local Cluster")
+    print("Press B: To continue for Cloud Cluster")
+    choiceHadoop = input("Enter your choice: ")
+    if choiceHadoop == 'A' :
+        os.system('clear')
+        print("#####Working in Local Cluster#####\n\n")
+        # Code
+    elif choiceHadoop == 'B':
+        os.system('clear')
+        print("#####Working in Remote Cluster#####\n\n")
+        # Code
+    else : 
+        print(colors.fg.red,"Wrong Input! Pls try again.",colors.reset)
+
+
+def aws() :
+    ####################
+    ##Complete this function
+    #####################
+    os.system('clear')
+    print("Creating new AWS EC-2 instance\n\n\n")
+    print("Deleting AWS EC-2 instance\n\n\n")
+    print("Creating new AWS S3 bucket\n\n\n")
+    print("Deleting AWS S3 bucket\n\n\n")
+
+####################################################
+######### Welcome screen
+####################################################
 
 import os
 rows, columns = os.popen('stty size', 'r').read().split()
@@ -47,10 +197,8 @@ width = int(columns)
 
 os.system('clear')
 
-hashLine = '#'
-print(colors.fg.pink,end="")
-print(hashLine.center(width,'#'),colors.reset)
-print('\n\n\n\n\n\n')
+hash()
+print('\n\n\n\n\n\n\n\n\n\n\n\n')
 
 print(colors.fg.red, colors.bold,'\t\t\t\t\t\t\t\t\t\tA',end="")
 print(colors.reset,end="")
@@ -62,88 +210,16 @@ print("\n\n")
 welcomeLine = 'Welcome!!'
 print(welcomeLine.center(width))
 
-print(colors.fg.lightgrey,end="")
+print(colors.fg.darkgrey,end="\n")
 continueLine = "Press enter to Continue..."
 print(continueLine.center(width),colors.reset)
 
-print('\n\n\n\n\n\n')
-print(colors.fg.pink,end="")
-print(hashLine.center(width,'#'),colors.reset)
+print('\n\n\n\n\n\n\n\n\n\n\n\n\n')
+hash()
 input()
 
-####################################
-############Displaying Menu
-###################################
+#################################
+##########Displaying Menu
+#################################
 
-os.system('clear')
-hashLine = '#'
-print(colors.fg.pink,end="")
-print(hashLine.center(width,'#'),colors.reset)
-print("\n")
-printMenu = "Menu Items :"
-print(printMenu.center(width))
-
-print(colors.fg.yellow)
-print("Press 1: To see date")
-print(colors.fg.purple)
-print("Press 2: To see calendar")
-print(colors.fg.yellow)
-print("Press 3: To set-up Hadoop Cluster")
-print(colors.fg.purple)
-print("Press 4: To create new AWS EC-2 instance")
-print(colors.fg.yellow)
-print("Press 5: To delete AWS EC-2 instance")
-print(colors.fg.purple)
-print("Press 6: To create new AWS S3 bucket")
-print(colors.fg.yellow)
-print("Press 7: To delete AWS S3 bucket")
-print(colors.fg.purple)
-print(colors.reset)
-
-choice = input("Enter your choice: ")
-
-if choice == '1' :
-    os.system('clear')
-    os.system('date')
-elif choice == '2' :
-    os.system('clear')
-    os.system('cal')
-elif choice == '3' :
-    os.system('clear')
-    print("Press A: To continue for Local Cluster")
-    print("Press B: To continue for Cloud Cluster")
-    choice2 = input("Enter your choice: ")
-    if choice2 == 'A' :
-        os.system('clear')
-        print("#####Working in Local Cluster#####\n\n")
-        # Code
-    elif choice2 == 'B':
-        os.system('clear')
-        print("#####Working in Remote Cluster#####\n\n")
-        # Code
-    else : 
-        print(colors.fg.red,"Wrong Input! Pls try again.",colors.reset)
-elif choice == '4' :
-    os.system('clear')
-    print("Creating new AWS EC-2 instance\n\n\n")
-    ##################
-    ########## code
-    ##################
-elif choice == '5' :
-    os.system('clear')
-    print("Deleting AWS EC-2 instance\n\n\n")
-    ##################
-    ########## code
-    ##################
-elif choice == '6' :
-    os.system('clear')
-    print("Creating new AWS S3 bucket\n\n\n")
-    ##################
-    ########## code
-    ##################
-elif choice == '7':
-    os.system('clear')
-    print("Deleting AWS S3 bucket\n\n\n")
-    ##################
-    ########## code
-    ##################
+menu()
